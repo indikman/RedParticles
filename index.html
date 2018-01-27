@@ -25,6 +25,13 @@
             camera = new THREE.PerspectiveCamera(80, window.innerWidth/window,innerHeight, 1, 4000);
 
             camera.position.z = 1000;
+
+            //Generate the scene
+            scene = new THREE.scene;
+            scene.add(camera);
+
+            renderer = new THREE.CanvasRenderer();
+            renderer.setSize(window.innerWidth)
         }
     </script>
 </html>
