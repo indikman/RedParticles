@@ -1,0 +1,30 @@
+<html lang="en">
+    <head>
+        <title>Red Particles</title>
+        <meta charset="utf-8">
+
+        <style type="text/css">
+            body{
+                background-color: #FFFFFF;
+                margin: 0px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        
+    </body>
+    <script src="three.min.js"/>
+    <script>
+        var camera, scene, renderer,
+        mouseX=0, mouseY=0,
+        particles = [];
+        init();
+
+        function init(){
+            camera = new THREE.PerspectiveCamera(80, window.innerWidth/window,innerHeight, 1, 4000);
+
+            camera.position.z = 1000;
+        }
+    </script>
+</html>
