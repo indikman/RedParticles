@@ -14,24 +14,74 @@
     <body>
         
     </body>
-    <script src="three.min.js"/>
+    <script src="three.min.js"></script>
     <script>
+        console.log("Initiated!");
         var camera, scene, renderer,
         mouseX=0, mouseY=0,
+        
         particles = [];
         init();
 
         function init(){
+
+            console.log("Initiated!");
             camera = new THREE.PerspectiveCamera(80, window.innerWidth/window,innerHeight, 1, 4000);
 
             camera.position.z = 1000;
 
             //Generate the scene
-            scene = new THREE.scene;
+            scene = new THREE.Scene;
             scene.add(camera);
 
             renderer = new THREE.CanvasRenderer();
-            renderer.setSize(window.innerWidth)
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            document.body.appendChild(renderer.domElement);
+
+            makeParticles();
+
+            document.addEventListener('mousemove', onMouseMove, false);
+        
+            setInterval(update, 1000/30);
         }
+
+
+        function update(){
+            updateParticles();
+
+            renderer.render(scene, camera);
+        }
+
+        function makeParticles(){
+            var particle, material;
+
+            for(var zpos = -1000; zpos<1000; zpos+=20){
+                material = new THREE.ParticleCanvasMaterial();
+
+                particle = new THREE.Particle(material);
+
+                particle.position.x = Math.random() * 1000 - 500;
+                particle.position.y = Math.random() * 1000 - 500;
+
+                particle.position.z = zpos;
+
+                particle.scale.x = particle.scale.y = 10;
+
+                scene.add(particle);
+
+                particles.push(particle);
+            }
+        }
+
+        function particleRender(context){
+
+        }
+
+        function updateParticles(){
+
+        }
+
+
     </script>
 </html>
